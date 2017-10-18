@@ -64,7 +64,9 @@ class PostsNew extends Component {
     // we should be thinking about action creators.
     // so onSubmit we want to be calling an action creator
 
-    this.props.createPost(values);
+  this.props.createPost(values, (()=> {
+  this.props.history.push('/');
+}));
 
   }
 
@@ -80,7 +82,7 @@ class PostsNew extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           labletolokeboke = "title"
-          name="title" // this is what connects to the validation . they must be identical.and they must have the same name as yhe object in your json api 
+          name="title" // this is what connects to the validation . they must be identical.and they must have the same name as yhe object in your json api
           component={this.renderField}>
           </Field>
 
