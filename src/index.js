@@ -12,6 +12,9 @@ import PostsIndex from './components/posts_index'
 import PostsNew from './components/posts_new'
 import App from './components/app';
 
+//style
+import styles from './app.css'
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 class Hello extends React.Component {
