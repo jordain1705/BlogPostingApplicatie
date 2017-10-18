@@ -11,6 +11,7 @@ import promise from 'redux-promise';
 import PostsIndex from './components/posts_index'
 import PostsNew from './components/posts_new'
 import App from './components/app';
+import PostsShow from './components/posts_show'
 
 //style
 import styles from './app.css'
@@ -37,6 +38,7 @@ ReactDOM.render(
         {/* <Route path="/hello" component={Hello}/>
       <Route path="/goodbye" component={Goodbye}/> */}
         <Route path="/posts/new" component={PostsNew}/>
+        <Route path="/posts/:id" component={PostsShow}/>
         <Route path="/" component={PostsIndex}/>
       </Switch>
     </div>
