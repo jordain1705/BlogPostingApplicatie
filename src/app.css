@@ -2,7 +2,13 @@ body {
     background-color: #025aa5;
 }
 
+.postname{
+  color: white;
+}
 
+.nn{
+  color: white;
+}
 
 form a {
   margin-left: 100px;

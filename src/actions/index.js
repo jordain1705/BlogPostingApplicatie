@@ -2,7 +2,7 @@ import axios from 'axios';
 export const FETCH_POSTS = 'fetch_posts';
 export const FETCH_POST = 'fetch_post';
 export const CREATE_POST = 'create_post';
-
+export const DELETE_POST = 'delete_post';
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api'
 const API_KEY = '?key=alguleuk'
 
@@ -17,7 +17,6 @@ export function fetchPosts() {
     payload: request
   };
 }
-
 
 export function createPost(values, callback) {
 
@@ -36,5 +35,15 @@ export function fetchPost(id) {
     return {
       type: FETCH_POST,
       payload: request
+    };
+}
+
+export function deletePost(id, callback) {
+//remember to define the type of request. Dit kan zijn delete,get,post
+  const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`).then(() => callback());
+
+    return {
+      type: DELETE_POST,
+      payload: id
     };
 }
