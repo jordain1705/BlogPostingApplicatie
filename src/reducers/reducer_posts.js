@@ -1,10 +1,15 @@
 import _ from 'lodash'
 import {FETCH_POSTS } from '../actions';
 import {FETCH_POST } from '../actions';
-
+import {DELETE_POST } from '../actions';
 export default function (state = {}, action) {
   switch (action.type) {
-      // when the FETCH_POSTS action is invoced change the array to and object
+    // remove the deleted post from you LOCAL state. for users with a slow connection
+    case DELETE_POST:
+    return _.omit(state,action.payload);
+
+
+    // when the FETCH_POSTS action is invoced change the array to and object
     case FETCH_POST:
 
     // const post = action.payload.data;

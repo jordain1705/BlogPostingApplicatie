@@ -32,7 +32,7 @@ render() {
         </Link>
       </div>
       <h3 className="postnamecss">Posts</h3>
-      <ul className="list-group">
+      <ul className="list-group listcss">
         {this.renderPosts()}
 
       </ul>
