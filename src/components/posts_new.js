@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import {createPost} from  '../actions';
 
 class PostsNew extends Component {
-
-
 
 // this is duplicate. so lets make a component that makes a field.
 // renderTitleField(field) {
@@ -60,7 +60,12 @@ class PostsNew extends Component {
   }
 
   onSubmit(values){
-    console.log(values)
+    // whenever we think about saving data or making an api request of any type
+    // we should be thinking about action creators.
+    // so onSubmit we want to be calling an action creator
+
+    this.props.createPost(values);
+
   }
 
 
@@ -75,19 +80,19 @@ class PostsNew extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           labletolokeboke = "title"
-          name="title" // this is what connects to the validation . they must be identical
+          name="title" // this is what connects to the validation . they must be identical.and they must have the same name as yhe object in your json api 
           component={this.renderField}>
           </Field>
 
         <Field
-            labletolokeboke = "Categories"
-            name="Categories"
+            labletolokeboke = "categories"
+            name="categories"
             component={this.renderField}>
           </Field>
 
           <Field
               labletolokeboke = "PostContent"
-              name="PostContent"
+              name="content"
               component={this.renderField}>
             </Field>
             <button type="submit" className= "btn btn-primary">Submit</button>
@@ -109,7 +114,7 @@ if ( !values.title || values.title.length < 3){
   errors.title = "Enter a title"
 }
 if ( !values.title || values.title.length < 3){
-  errors.Categories = "Enter a Categories"
+  errors.categories = "Enter a Categories"
 }
 if ( !values.title|| values.title.length < 3){
   errors.PostContent = "Enter a PostContent"
@@ -121,8 +126,10 @@ if ( !values.title|| values.title.length < 3){
   return errors;
 }
 
-
+//helpers
 export default reduxForm({
   validate,
-  form: 'blablabla'
-})(PostsNew);
+  form: 'PostsNewForm'
+})(
+  connect(null,{ createPost })(PostsNew)
+);
